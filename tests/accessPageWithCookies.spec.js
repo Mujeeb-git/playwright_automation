@@ -11,4 +11,11 @@ test('Access Dashboard with Saved Cookies', async ({ page }) => {
 
   // Verify login success
   await expect(page.locator('text=Welcome')).toBeVisible();
+
+  //working with multiple elements
+ /* const images = page.locator("//img");
+  const allImages = images.all();
+  for await (const img of allImages){
+    //do action
+  } */
 });
