@@ -13,6 +13,8 @@ test("Verify Error message", async function({page}){
 
     await page.locator("input[name='password']").fill("admin");
 
+//    await page.fill("input[name='password']","admin");
+
     await page.locator("//button[normalize-space()='Login']").click();
 
     const errorMessage = await page.locator("//p[contains(@class,'alert-content-text')]").textContent();
