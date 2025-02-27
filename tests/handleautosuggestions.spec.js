@@ -13,7 +13,7 @@ test("Verify auto suggestions ", async function ({ page }) {
     await page.keyboard.press("Enter");
 });
 
-test.only("Verify Application title using keyboard", async function ({ page }) {
+test("Verify Application title using keyboard", async function ({ page }) {
     await page.goto("https://www.google.com");
 
     await page.locator("textarea[name='q']").fill("playwright");
@@ -25,7 +25,7 @@ test.only("Verify Application title using keyboard", async function ({ page }) {
     for(let i=0; i<elements.length;i++){
         
         const text = await elements[i].textContent();
-        console.log(`Autosuggestion-${i+1} :${text}`);
+       // console.log(`Autosuggestion-${i+1} :${text}`);
 
         if(text.includes("testing")){
             await elements[i].click();
