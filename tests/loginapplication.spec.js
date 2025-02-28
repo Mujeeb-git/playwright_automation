@@ -1,5 +1,5 @@
 const { test, expect } = require("@playwright/test");
-const LoginPage = require("../pages/loginpage").default;
+const LoginPage = require("../pages/loginpage");
 const HomePage = require("../pages/homepage");
 
 test("Verify login and logout of application", async ({ page }) => {
