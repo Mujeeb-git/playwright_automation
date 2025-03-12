@@ -1,0 +1,16 @@
+{
+    "default": {
+        "dryRun": false,
+        "formatOptions": {
+            "snippetInterface": "async-await"
+        },
+        "paths": [
+            "./e2e/tests/features/*.feature"
+        ],
+        "require": [
+            "./e2e/tests/stepdefinitions/*.js",
+            "./e2e/corelibs/corelibs.js"
+        ],
+        "format": []
+    }
+}
