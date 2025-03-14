@@ -1,0 +1,30 @@
+{
+    "myAccountLink": {
+        "locatorOptions": {},
+        "locator": "//span[normalize-space()='My account']/ancestor::a[@role='button']",
+        "description": "My Account link on landing page",
+        "actionsOptions": {
+            "timeout": 5000
+        }
+    },
+    "usernameField": {
+        "locatorOptions": {},
+        "locator": "//input[@placeholder='E-Mail Address']",
+        "description": "Username field on login page",
+        "actionsOptions": {
+            "timeout": 5000
+        }
+    },
+    "passwordField": {
+        "locatorOptions": {},
+        "locator": "//input[@placeholder='Password']",
+        "description": "Password field on login page",
+        "actionsOptions": {}
+    },
+    "loginButton": {
+        "locatorOptions": {},
+        "locator": "//input[@type='submit']",
+        "description": "Login button in login page",
+        "actionsOptions": {}
+    }
+}

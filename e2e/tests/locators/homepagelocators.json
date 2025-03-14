@@ -1,0 +1,14 @@
+{
+    "myAccountLabel": {
+        "locator": "//li[@class='breadcrumb-item active']",
+        "description": "My Account label on the Home page"
+    },
+    "myAccountlink": {
+        "locator": "//a[@class='list-group-item active'][normalize-space()='My Account']",
+        "description": "My Account link on the right side of Home page"
+    },
+    "logoutButton": {
+        "locator": "//a[contains(text(),'Logout')]",
+        "description": "Logout button on the Home page"
+    }
+}

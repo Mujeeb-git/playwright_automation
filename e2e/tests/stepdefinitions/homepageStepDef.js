@@ -9,6 +9,10 @@ Then('Home page should be displayed', async function () {
     const homePage = new HomePage(getPage())
     await homePage.verifyHomePageDisplayed();
 });
+Then('user logs out', async function () {
+    const homePage = new HomePage(getPage())
+    await homePage.logout();
+});
 
 
 
