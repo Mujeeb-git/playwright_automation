@@ -2,12 +2,20 @@
 const { Before, After, setDefaultTimeout } = require("@cucumber/cucumber");
 const { chromium } = require("@playwright/test");
 
-setDefaultTimeout(60 * 1000);
 
 let browser;
 let bCtx;
 let page;
+let sharedContext = {};
+setDefaultTimeout(60 * 1000);
 
+function setPage(page) {
+    sharedContext.page = page; // Store the page object
+}
+
+function getPage() {
+    return sharedContext.page; // Access the stored page object
+}
 Before(async function () {
     browser = await chromium.launch({
         headless: false,
@@ -19,7 +27,7 @@ Before(async function () {
         javaScriptEnabled: true
     });
     page = await bCtx.newPage();
-    this.page = page;
+    setPage(page); // Store the page object
 });
 
 After(async function () {
@@ -28,4 +36,6 @@ After(async function () {
     await browser.close();
 });
 
-module.exports = {page};
+
+
+module.exports = getPage;

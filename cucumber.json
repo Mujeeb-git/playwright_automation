@@ -9,7 +9,7 @@
         ],
         "require": [
             "./e2e/tests/stepdefinitions/*.js",
-            "./e2e/corelibs/corelibs.js"
+            "./e2e/corelib/corelib.js"
         ],
         "format": []
     }
