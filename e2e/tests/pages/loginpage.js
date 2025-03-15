@@ -5,9 +5,7 @@ class LoginPage extends BasePage {
        super(page);
     }
 
-    async launchURL(url) {
-        await this.page.goto(url);
-    }
+
     async navigateToLoginPage() {
         //await this.page.locator(loginPageLoc.myAccountLink.locator).click();
         await this.click(loginPageLoc.myAccountLink);
@@ -23,8 +21,8 @@ class LoginPage extends BasePage {
         // await this.page.locator(loginPageLoc.loginButton.locator,loginPageLoc.loginButton.locatorOptions).click(loginPageLoc.loginButton.actionsOptions);
 
         //await this.page.locator(loginPageLoc.usernameField.locator).waitFor(loginPageLoc.usernameField.actionsOptions);
-        await this.enter(loginPageLoc.usernameField,uname);
-        await this.enter(loginPageLoc.passwordField,pwd);
+        await this.enter(loginPageLoc.usernameField,process.env.user_name);
+        await this.enter(loginPageLoc.passwordField,process.env.password);
         await this.click(loginPageLoc.loginButton);
     }
 

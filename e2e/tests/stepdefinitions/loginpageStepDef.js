@@ -7,7 +7,6 @@ const url = "https://ecommerce-playground.lambdatest.io";
 
 Given('user is on login page', async function () {
     const loginPage = new LoginPage(getPage());
-    await loginPage.launchURL(url);
     await loginPage.navigateToLoginPage();
 });
 
