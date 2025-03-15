@@ -10,5 +10,12 @@
     "logoutButton": {
         "locator": "//a[contains(text(),'Logout')]",
         "description": "Logout button on the Home page"
+    },
+    "continueButton": {
+        "locator": "link",
+        "description": "Continue button on the Home page",
+        "locatorOptions": {
+            "name":"Continue"
+        }
     }
 }
