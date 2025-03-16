@@ -3,8 +3,8 @@ const { expect } = require("@playwright/test")
 const homepageloc = require("../locators/homepagelocators.json");
 const BasePage = require("../pages/basepage");
 class HomePage extends BasePage {
-    constructor(page) {
-        super(page);
+    constructor(page,log) {
+        super(page,log);
     }
 
     async verifyHomePageDisplayed() {

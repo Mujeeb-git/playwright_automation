@@ -1,8 +1,8 @@
 const loginPageLoc = require("../locators/loginpagelocators.json");
 const BasePage = require("../pages/basepage");
 class LoginPage extends BasePage {
-    constructor(page) {
-       super(page);
+    constructor(page,log) {
+        super(page,log);
     }
 
 
@@ -13,7 +13,7 @@ class LoginPage extends BasePage {
     }
 
     async loginToApplication(uname, pwd) {
-        console.log("user entering username and password");
+        this.log("user entering username and password");
         //adding locator options and action options just to demonstrate
         // await this.page.locator(loginPageLoc.usernameField.locator).waitFor(loginPageLoc.usernameField.actionsOptions);
         // await this.page.locator(loginPageLoc.usernameField.locator,loginPageLoc.usernameField.locatorOptions).fill(uname);

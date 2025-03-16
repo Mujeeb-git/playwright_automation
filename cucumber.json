@@ -11,6 +11,10 @@
             "./e2e/tests/stepdefinitions/*.js",
             "./e2e/corelib/corelib.js"
         ],
-        "format": []
+        "format": [
+            ["json", "reports/cucumber_report.json" ],
+            ["junit","reports/junit.xml"],
+            ["html","reports/html-formatter.html"]
+        ]
     }
 }

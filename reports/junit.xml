@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<testsuite name="Cucumber" time="27.709" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-03-16T07:14:03.470Z">
+  <testcase classname="Login to application" name="To test login" time="26.679">
+    <system-out><![CDATA[Given user is on login page.................................................passed
+When user enters username as "dummy1234@gmail.com" and password as "dummy1234@gmail.com"..passed
+Then Home page should be displayed..........................................passed
+And user logs out...........................................................passed]]></system-out>
+  </testcase>
+</testsuite>

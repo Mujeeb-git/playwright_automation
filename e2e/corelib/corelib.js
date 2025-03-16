@@ -1,5 +1,5 @@
 
-const { Before, After, setDefaultTimeout, BeforeAll, AfterAll } = require("@cucumber/cucumber");
+const { Before, After, setDefaultTimeout, BeforeAll, AfterAll, BeforeStep,AfterStep, Status } = require("@cucumber/cucumber");
 const { chromium } = require("@playwright/test");
 const dotenv = require("dotenv")
 
@@ -19,7 +19,14 @@ function getPage() {
 }
 
 BeforeAll(async function () {
-    dotenv.config();
+    console.log("Environment:", process.env.ENV);
+    //take environment name from the command line argument 
+    //run in commonJS --> $env:ENV="stage"; npx cucumber-js
+    //run in Typescript( --env=stage)
+    dotenv.config({
+        //path: `${process.cwd()}/config/.env.${process.env.npm_config_env}` // --> in typescript
+        path: `${process.cwd()}/config/.env.${process.env.ENV}`
+    });
     let browserType = process.env.browser;
     switch (browserType) {
         case "gc":
@@ -51,7 +58,8 @@ BeforeAll(async function () {
     }
 });
 
-Before(async function () { //for every scenario
+Before(async function (scenario) { //for every scenario
+    this.log(`----------------------Scenario: ${scenario.pickle.name} : is started----------------------`);
     bCtx = await browser.newContext({
         viewport: null,
         javaScriptEnabled: true
@@ -63,9 +71,23 @@ Before(async function () { //for every scenario
 
 });
 
-After(async function () { //after each Scenario
+After(async function (scenario) { //after each Scenario
     await page.close();
     await bCtx.close();
+    this.log(`----------------------Scenario: ${scenario.pickle.name} : is ended----------------------`);
+    this.log(`>>>>>>>>>>>>>>> SCENARIO STATUS: ${scenario.result?.status} >>>>>>>>>>>>>>>>>>>`);
+    if(scenario.result?.status==Status.FAILED){
+        this.log(`Take screenshot for the failure here`);
+    }
+});
+
+BeforeStep(async function (scenario) { //before each step
+    this.log(`----------------------Step: ${scenario.pickleStep.text} : is started----------------------`);
+});
+
+AfterStep(async function (scenario) { //after each step
+   
+    this.log(`----------------------Step: ${scenario.pickleStep.text} : is ended----------------------`);
 });
 
 AfterAll(async function () {
