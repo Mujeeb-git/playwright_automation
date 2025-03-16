@@ -7,7 +7,7 @@ class BasePage {
             throw new Error("Page object is required and cannot be undefined!");
         }
         this.page = page;
-        this.log=log;
+        this.log = log;
     }
 
     async click(object, roleFlag = false) {

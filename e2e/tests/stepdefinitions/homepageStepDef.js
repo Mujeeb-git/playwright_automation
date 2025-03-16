@@ -10,6 +10,12 @@ Then('Home page should be displayed', async function () {
     const homePage = new HomePage(getPage(),this.log)
     await homePage.verifyHomePageDisplayed();
 });
+
+Then('Home page should not be displayed', async function () {
+    //pass cucumber ICreate log to the pages
+    const homePage = new HomePage(getPage(),this.log)
+    await homePage.verifyHomePageNotDisplayed();
+});
 Then('user logs out', async function () {
     const homePage = new HomePage(getPage())
     await homePage.logout();

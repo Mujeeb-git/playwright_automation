@@ -1,5 +1,5 @@
 
-const { Before, After, setDefaultTimeout, BeforeAll, AfterAll, BeforeStep,AfterStep, Status } = require("@cucumber/cucumber");
+const { Before, After, setDefaultTimeout, BeforeAll, AfterAll, BeforeStep, AfterStep, Status } = require("@cucumber/cucumber");
 const { chromium } = require("@playwright/test");
 const dotenv = require("dotenv")
 
@@ -72,13 +72,31 @@ Before(async function (scenario) { //for every scenario
 });
 
 After(async function (scenario) { //after each Scenario
-    await page.close();
-    await bCtx.close();
+
     this.log(`----------------------Scenario: ${scenario.pickle.name} : is ended----------------------`);
     this.log(`>>>>>>>>>>>>>>> SCENARIO STATUS: ${scenario.result?.status} >>>>>>>>>>>>>>>>>>>`);
-    if(scenario.result?.status==Status.FAILED){
+
+    //attach screenshot to the report on failure
+    if (scenario.result?.status == Status.FAILED) {
         this.log(`Take screenshot for the failure here`);
+        const image = await page.screenshot({
+            path: `./reports/${scenario.pickle.name}.png`
+        });
+        this.attach(image,'image/png');
     }
+
+    //attach a file to the report
+    const obj = {
+        fname:'test1',
+        lname:'test2',
+        zipcode:5234234
+    };
+    this.attach(JSON.stringify(obj),"application/json");
+
+
+
+    await page.close();
+    await bCtx.close();
 });
 
 BeforeStep(async function (scenario) { //before each step
@@ -86,7 +104,7 @@ BeforeStep(async function (scenario) { //before each step
 });
 
 AfterStep(async function (scenario) { //after each step
-   
+
     this.log(`----------------------Step: ${scenario.pickleStep.text} : is ended----------------------`);
 });
 

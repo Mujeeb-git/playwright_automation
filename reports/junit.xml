@@ -1,9 +1,18 @@
 <?xml version="1.0"?>
-<testsuite name="Cucumber" time="27.709" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-03-16T07:14:03.470Z">
-  <testcase classname="Login to application" name="To test login" time="26.679">
+<testsuite name="Cucumber" time="55.623" tests="2" skipped="0" failures="1" errors="0" timestamp="2025-03-16T10:06:16.438Z">
+  <testcase classname="Login to application" name="To test login" time="22.771">
     <system-out><![CDATA[Given user is on login page.................................................passed
-When user enters username as "dummy1234@gmail.com" and password as "dummy1234@gmail.com"..passed
+When user enters username and password......................................passed
 Then Home page should be displayed..........................................passed
 And user logs out...........................................................passed]]></system-out>
+  </testcase>
+  <testcase classname="Login to application" name="To test login 2" time="31.734">
+    <failure type="Error" message="[2mexpect([22m[31mreceived[39m[2m).[22mtoBeFalsy[2m()[22m&#xA;&#xA;Received: [31m{Symbol(async_id_symbol): 21788, Symbol(trigger_async_id_symbol): 20923, Symbol(kResourceStore): undefined, Symbol(kResourceStore): undefined, Symbol(kResourceStore): {&quot;world&quot;: {&quot;attach&quot;: [Function bound create], &quot;link&quot;: [Function bound link], &quot;log&quot;: [Function bound log], &quot;parameters&quot;: {}}}}[39m"><![CDATA[    at Proxy.<anonymous> (F:\PlaywrightAutomation\playwright_automation\node_modules\@playwright\test\node_modules\playwright\lib\matchers\expect.js:228:37)
+    at HomePage.verifyHomePageNotDisplayed (F:\PlaywrightAutomation\playwright_automation\e2e\tests\pages\homepage.js:19:82)
+    at async World.<anonymous> (F:\PlaywrightAutomation\playwright_automation\e2e\tests\stepdefinitions\homepageStepDef.js:17:5)]]></failure>
+    <system-out><![CDATA[Given user is on login page.................................................passed
+When user enters username and password......................................passed
+Then Home page should not be displayed......................................failed
+And user logs out...........................................................skipped]]></system-out>
   </testcase>
 </testsuite>

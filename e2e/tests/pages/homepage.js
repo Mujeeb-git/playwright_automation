@@ -13,6 +13,11 @@ class HomePage extends BasePage {
         expect(this.page.locator(homepageloc.myAccountlink.locator).isVisible()).toBeTruthy();
     }
 
+    async verifyHomePageNotDisplayed() {
+        console.log("Verifying Home page is not displayed");
+        console.log(await this.page.locator(homepageloc.myAccountLabel.locator).textContent());
+        expect(this.page.locator(homepageloc.myAccountlink.locator).isVisible()).toBeFalsy();
+    }
     async logout() {
         await this.click(homepageloc.logoutButton);
         //can use below line using Typescript only

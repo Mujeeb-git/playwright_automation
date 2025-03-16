@@ -14,9 +14,9 @@ Given('user is on login page', async function () {
     this.log(`login is successful`);
 });
 
-When('user enters username as {string} and password as {string}', async function (uname, pwd) {
+When('user enters username and password', async function () {
     const loginPage = new LoginPage(getPage());
-    await loginPage.loginToApplication(uname,pwd);
+    await loginPage.loginToApplication();
 });
 
 
