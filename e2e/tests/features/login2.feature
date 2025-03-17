@@ -1,4 +1,4 @@
-Feature: Login to application
+Feature: Login to application 2
 
     Scenario: To test login 2
         Given user is on login page

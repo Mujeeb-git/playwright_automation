@@ -20,6 +20,8 @@ Then('user logs out', async function () {
     const homePage = new HomePage(getPage())
     await homePage.logout();
     this.log(`logout is successful`);
+    //here this.parameters.a is set in different stepdef and using here
+    console.log(`utilizing this parameter in homepage as ${this.parameters.a}`);
 });
 
 

@@ -59,7 +59,7 @@ BeforeAll(async function () {
 });
 
 Before(async function (scenario) { //for every scenario
-    this.log(`----------------------Scenario: ${scenario.pickle.name} : is started----------------------`);
+    this.attach(`----------------------Scenario: ${scenario.pickle.name} : is started----------------------`);
     bCtx = await browser.newContext({
         viewport: null,
         javaScriptEnabled: true
@@ -73,12 +73,12 @@ Before(async function (scenario) { //for every scenario
 
 After(async function (scenario) { //after each Scenario
 
-    this.log(`----------------------Scenario: ${scenario.pickle.name} : is ended----------------------`);
-    this.log(`>>>>>>>>>>>>>>> SCENARIO STATUS: ${scenario.result?.status} >>>>>>>>>>>>>>>>>>>`);
+    this.attach(`----------------------Scenario: ${scenario.pickle.name} : is ended----------------------`);
+    this.attach(`>>>>>>>>>>>>>>> SCENARIO STATUS: ${scenario.result?.status} >>>>>>>>>>>>>>>>>>>`);
 
     //attach screenshot to the report on failure
     if (scenario.result?.status == Status.FAILED) {
-        this.log(`Take screenshot for the failure here`);
+        this.attach(`Take screenshot for the failure here`);
         const image = await page.screenshot({
             path: `./reports/${scenario.pickle.name}.png`
         });
@@ -100,12 +100,12 @@ After(async function (scenario) { //after each Scenario
 });
 
 BeforeStep(async function (scenario) { //before each step
-    this.log(`----------------------Step: ${scenario.pickleStep.text} : is started----------------------`);
+    this.attach(`----------------------Step: ${scenario.pickleStep.text} : is started----------------------`);
 });
 
 AfterStep(async function (scenario) { //after each step
 
-    this.log(`----------------------Step: ${scenario.pickleStep.text} : is ended----------------------`);
+    this.attach(`----------------------Step: ${scenario.pickleStep.text} : is ended----------------------`);
 });
 
 AfterAll(async function () {
